@@ -1,30 +1,27 @@
-import styles from '../styles/Home.module.css'
-import { getHeroUnit } from "../lib/kontentClient";
+import { getCafe, getHome } from "../lib/kontentClient";
 import { GetStaticProps, NextPage } from 'next';
-import { HeroUnit } from '../models/content-types/hero_unit';
+import { Home as HomeType } from '../models';
+import Layout from "../Components/Layout";
+import Home from '../PageTypes/Home';
 
-const Home: NextPage<IndexProps> = ({ heroUnit }) => {
-  return (
-    <main >
-      <div className={styles.hero}>
-        <h1 className="append-dot">{heroUnit.elements.title.value}</h1>
-        <div className={styles.summary} dangerouslySetInnerHTML={{ __html: heroUnit.elements.marketingMessage.value }}>
-        </div>
-      </div>
-    </main>
-  )
+const Index: NextPage<IndexProps> = ({ homeData }) => {
+  const lang = 'en-US';
+
+  return (<Home homeData={homeData} />);
 }
 
-export default Home
+export default Index
 
 interface IndexProps {
-  heroUnit: HeroUnit;
+  homeData: HomeType;
 }
 
 export const getStaticProps: GetStaticProps<IndexProps> = async () => {
-  const heroUnit = await getHeroUnit();
+  const homeData = await getHome();
 
+  // @TODO: look into circlular ref issue with linkedItems[3]
+  homeData.elements.articles.linkedItems = homeData.elements.articles.linkedItems.slice(0, 3); 
   return {
-    props: { heroUnit },
+    props: {homeData}
   };
 }

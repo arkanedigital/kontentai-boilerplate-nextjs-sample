@@ -9,14 +9,23 @@
     "start": "next start"
   },
   "dependencies": {
-    "@kontent-ai/delivery-sdk": "^12.4.0",
+    "@kontent-ai/delivery-sdk": "^12.4.3",
+    "@kontent-ai/react-components": "^0.1.1",
+    "@simply007org/react-spinners": "^0.0.3",
     "next": "13.0.0",
+    "qs": "^6.9.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-helmet": "^6.0.0",
+    "react-intl": "^5.24.8",
+    "universal-cookie": "^4.0.4",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.8",
+    "@types/qs": "^6.9.7",
     "@types/react": "^18.0.24",
+    "@types/react-helmet": "^6.1.6",
     "eslint": "^8.26.0",
     "eslint-config-next": "^13.0.0",
     "typescript": "^4.8.4"
